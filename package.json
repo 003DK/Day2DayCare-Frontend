@@ -1,4 +1,7 @@
 {
+  "overrides": {
+    "dompurify": "^3.2.0"
+  },
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
