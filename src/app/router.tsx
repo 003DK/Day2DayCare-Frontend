@@ -7,13 +7,18 @@ const BranchAdminPage = lazy(() => import('@/features/branch-admin/BranchAdminPa
 const SettingsPage = lazy(() => import('@/features/settings/SettingsPage'))
 const NotFoundPage = lazy(() => import('@/features/home/NotFoundPage'))
 
-const router = createBrowserRouter([
-  { path: '/', element: <HomePage /> },
-  { path: '/products', element: <ProductsPage /> },
-  { path: '/branch-admin', element: <BranchAdminPage /> },
-  { path: '/settings', element: <SettingsPage /> },
-  { path: '*', element: <NotFoundPage /> },
-])
+const router = createBrowserRouter(
+  [
+    { path: '/', element: <HomePage /> },
+    { path: '/products', element: <ProductsPage /> },
+    { path: '/branch-admin', element: <BranchAdminPage /> },
+    { path: '/settings', element: <SettingsPage /> },
+    { path: '*', element: <NotFoundPage /> },
+  ],
+  {
+    basename: '/day2daycare-frontend',
+  },
+)
 
 export function AppRouter() {
   return (
