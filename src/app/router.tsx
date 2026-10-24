@@ -16,7 +16,7 @@ const router = createBrowserRouter(
     { path: '*', element: <NotFoundPage /> },
   ],
   {
-    basename: '/day2daycare-frontend',
+    basename: '/Day2DayCare-Frontend',
   },
 )
 
