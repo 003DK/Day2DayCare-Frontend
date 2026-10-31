@@ -10,7 +10,7 @@ const patientSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   phone: z.string().min(7, 'Enter a valid phone number'),
   email: z.string().email('Enter a valid email'),
-  age: z.coerce.number().min(1, 'Age must be greater than 0').max(120, 'Age looks invalid'),
+  age: z.number().min(1, 'Age must be greater than 0').max(120, 'Age looks invalid'),
   gender: z.enum(['Male', 'Female', 'Other']),
   status: z.enum(['Active', 'In Progress', 'Scheduled', 'Review']),
   treatment: z.string().min(2, 'Treatment is required'),
@@ -75,7 +75,7 @@ export function PatientFormModal({
             type="number"
             placeholder="30"
             error={errors.age?.message}
-            {...register('age')}
+            {...register('age', { valueAsNumber: true })}
           />
           <FormSelect
             label="Gender"

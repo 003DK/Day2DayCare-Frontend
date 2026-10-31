@@ -30,7 +30,7 @@ export function PatientGrowth({ data }: { data: PatientGrowthPoint[] }) {
           <Tooltip
             cursor={{ fill: 'rgba(7,151,168,0.06)' }}
             contentStyle={{ borderRadius: 12, border: '1px solid rgba(255,255,255,0.8)' }}
-            formatter={(value: number) => [`${value} Patients`, '']}
+            formatter={(value) => [`${value} Patients`, '']}
           />
           <Bar dataKey="patients" radius={[10, 10, 0, 0]}>
             {data.map((entry) => (
