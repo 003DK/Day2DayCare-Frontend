@@ -4,6 +4,7 @@ import { Providers } from '@/app/providers'
 import { AppRouter } from '@/app/router'
 import './index.css'
 import '@/styles/theme.css'
+import '@/styles/physiocare-tailwind.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

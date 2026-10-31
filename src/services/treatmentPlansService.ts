@@ -1,0 +1,60 @@
+import type { TreatmentPlan } from '@/types/treatmentPlan'
+
+const treatmentPlans: TreatmentPlan[] = [
+  {
+    id: 'tp-1',
+    patientName: 'Sarah Johnson',
+    patientPhoto: 'https://i.pravatar.cc/80?img=47',
+    treatment: 'Post-op Knee Rehabilitation',
+    therapist: 'Dr. Sarah Wilson',
+    startDate: 'Mar 1, 2025',
+    endDate: 'May 30, 2025',
+    progress: 75,
+    totalSessions: 20,
+    completedSessions: 15,
+    status: 'Active',
+  },
+  {
+    id: 'tp-2',
+    patientName: 'Michael Anderson',
+    patientPhoto: 'https://i.pravatar.cc/80?img=12',
+    treatment: 'Shoulder Mobility Therapy',
+    therapist: 'Dr. Sarah Wilson',
+    startDate: 'Feb 10, 2025',
+    endDate: 'Apr 10, 2025',
+    progress: 60,
+    totalSessions: 16,
+    completedSessions: 10,
+    status: 'Active',
+  },
+  {
+    id: 'tp-3',
+    patientName: 'Emily Davis',
+    patientPhoto: 'https://i.pravatar.cc/80?img=32',
+    treatment: 'Spinal Rehabilitation',
+    therapist: 'Dr. Sarah Wilson',
+    startDate: 'Jan 5, 2025',
+    endDate: 'Mar 30, 2025',
+    progress: 90,
+    totalSessions: 18,
+    completedSessions: 16,
+    status: 'Completed',
+  },
+  {
+    id: 'tp-4',
+    patientName: 'Robert Wilson',
+    patientPhoto: 'https://i.pravatar.cc/80?img=51',
+    treatment: 'Neurological Rehabilitation',
+    therapist: 'Dr. Sarah Wilson',
+    startDate: 'Dec 1, 2024',
+    endDate: 'Jun 1, 2025',
+    progress: 40,
+    totalSessions: 30,
+    completedSessions: 12,
+    status: 'Paused',
+  },
+]
+
+export const treatmentPlansService = {
+  list: (): Promise<TreatmentPlan[]> => Promise.resolve(treatmentPlans),
+}
