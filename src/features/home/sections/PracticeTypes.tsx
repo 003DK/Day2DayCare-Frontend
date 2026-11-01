@@ -6,47 +6,18 @@ const PRACTICE_TYPES = [
 
 export function PracticeTypes() {
   return (
-    <section style={{ padding: '56px 24px', maxWidth: 1100, margin: '0 auto' }}>
-      <p
-        style={{
-          textAlign: 'center',
-          fontSize: 13,
-          fontWeight: 700,
-          color: 'var(--color-primary-dark)',
-          margin: '0 0 4px',
-        }}
-      >
-        BY PRACTICE TYPE
-      </p>
-      <h2
-        style={{
-          textAlign: 'center',
-          fontSize: 26,
-          margin: '0 0 36px',
-          color: 'var(--color-primary)',
-        }}
-      >
-        Designed for every physiotherapy practice
-      </h2>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-          gap: 20,
-        }}
-      >
+    <section className="home-section home-practices">
+      <div className="home-section-heading">
+        <span className="home-section-kicker">MADE FOR YOUR PRACTICE</span>
+        <h2>Care that fits the way you work</h2>
+        <p>Thoughtful tools for every kind of physiotherapy team.</p>
+      </div>
+      <div className="home-practice-grid">
         {PRACTICE_TYPES.map((p) => (
-          <div
-            key={p.title}
-            style={{
-              padding: 20,
-              borderRadius: 'var(--radius)',
-              background: 'var(--color-bg-alt)',
-              borderTop: '3px solid var(--color-primary)',
-            }}
-          >
-            <h3 style={{ margin: '0 0 6px', fontSize: 16 }}>{p.title}</h3>
-            <p style={{ margin: 0, color: 'var(--color-text-muted)', fontSize: 14 }}>{p.desc}</p>
+          <div key={p.title} className="home-practice-card">
+            <span className="home-card-number">0{PRACTICE_TYPES.indexOf(p) + 1}</span>
+            <h3>{p.title}</h3>
+            <p>{p.desc}</p>
           </div>
         ))}
       </div>

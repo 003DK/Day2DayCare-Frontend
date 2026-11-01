@@ -1,5 +1,17 @@
 # React + TypeScript + Vite
 
+## Authentication
+
+1. Create a Firebase project and register this web app in Firebase.
+2. In Firebase Console, enable **Authentication → Sign-in method → Google** and **Email/Password**.
+3. Add your local and deployed hostnames under **Authentication → Settings → Authorized domains**.
+4. Copy `.env.example` to `.env`, keep `VITE_API_URL`, and fill in the Firebase web app's API key, auth domain, project ID, and app ID.
+5. Restart the Vite dev server after changing `.env`.
+
+Users can sign in with Google or their email address and password, and register an account from the login page. Newly authenticated users enter the clinic as therapists by default. Assign elevated roles through a trusted backend; client-side sign-in must not grant administrative permissions.
+
+When running in Vite development mode without Firebase configuration, the login page offers a local-only demo using the pre-filled `superadmin` username and `superadmin` password. This shortcut is not included in production builds.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:

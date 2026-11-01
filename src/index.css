@@ -194,6 +194,134 @@ button {
   font-size: 0.9rem;
 }
 
+.google-login {
+  display: grid;
+  gap: 16px;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  height: 1px;
+  flex: 1;
+  background: rgba(58, 91, 105, 0.14);
+  content: '';
+}
+
+.auth-divider > span {
+  text-transform: uppercase;
+}
+
+.auth-mode-toggle {
+  padding: 0;
+  background: none;
+  color: var(--mint-deep);
+  font-weight: 700;
+}
+
+.auth-mode-toggle:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.auth-mode-toggle:disabled {
+  cursor: wait;
+}
+
+.google-signin-button {
+  display: flex;
+  width: 100%;
+  min-height: 56px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid rgba(58, 91, 105, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 8px 18px rgba(37, 91, 105, 0.08),
+    inset 0 1px 0 white;
+  color: #294d5c;
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.google-signin-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: white;
+  box-shadow:
+    0 12px 23px rgba(37, 91, 105, 0.12),
+    inset 0 1px 0 white;
+}
+
+.google-signin-button:focus-visible,
+.auth-home-link:focus-visible {
+  outline: 3px solid rgba(95, 202, 203, 0.4);
+  outline-offset: 3px;
+}
+
+.google-signin-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.google-signin-icon {
+  width: 19px;
+  height: 19px;
+}
+
+.google-signin-spinner {
+  animation: google-signin-spin 0.8s linear infinite;
+}
+
+.google-login-caption {
+  margin: -4px 0 0;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+.auth-config-note {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(76, 148, 166, 0.16);
+  border-radius: 12px;
+  background: rgba(93, 181, 205, 0.1);
+  color: #3e7180;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.auth-home-link {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 7px;
+  margin-top: 8px;
+  color: #47717e;
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.auth-home-link:hover {
+  color: var(--mint-deep);
+}
+
+@keyframes google-signin-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .primary-button,
 .secondary-button,
 .ghost-button,

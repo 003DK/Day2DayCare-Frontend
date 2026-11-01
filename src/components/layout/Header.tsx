@@ -3,20 +3,36 @@ import { useNavigate } from 'react-router-dom'
 import { Bell, ChevronDown, LogOut, Menu, Search } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { Avatar } from '@/components/common/Avatar'
+import { isFirebaseConfigured } from '@/lib/env'
 
 export function Header({ onOpenMobileMenu }: { onOpenMobileMenu: () => void }) {
   const { userName, logout } = useAuth()
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
   const [search, setSearch] = useState('')
+  const [logoutError, setLogoutError] = useState('')
 
-  const handleLogout = () => {
-    logout()
-    navigate('/login')
+  const handleLogout = async () => {
+    setLogoutError('')
+    try {
+      if (isFirebaseConfigured()) {
+        const [{ signOut }, { getFirebaseAuth }] = await Promise.all([
+          import('firebase/auth'),
+          import('@/lib/firebase'),
+        ])
+        await signOut(getFirebaseAuth())
+      }
+      logout()
+      navigate('/login')
+    } catch (error) {
+      setLogoutError(
+        error instanceof Error ? error.message : 'Could not sign out. Please try again.',
+      )
+    }
   }
 
   return (
-    <header className="glass-panel flex items-center gap-4 rounded-3xl px-4 py-3">
+    <header className="glass-panel relative z-30 flex items-center gap-4 rounded-3xl px-4 py-3">
       <button
         type="button"
         onClick={onOpenMobileMenu}
@@ -60,7 +76,12 @@ export function Header({ onOpenMobileMenu }: { onOpenMobileMenu: () => void }) {
         </button>
 
         {menuOpen ? (
-          <div className="glass-panel absolute top-full right-0 z-20 mt-2 w-44 rounded-2xl p-1.5">
+          <div className="glass-panel absolute top-full right-0 z-20 mt-2 w-56 rounded-2xl p-1.5">
+            {logoutError ? (
+              <p className="px-3 py-2 text-xs text-danger" role="alert">
+                {logoutError}
+              </p>
+            ) : null}
             <button
               type="button"
               onClick={handleLogout}

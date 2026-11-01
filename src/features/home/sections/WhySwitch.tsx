@@ -7,35 +7,19 @@ const REASONS = [
 
 export function WhySwitch() {
   return (
-    <section style={{ padding: '56px 24px', background: 'var(--color-bg-alt)' }}>
-      <div style={{ maxWidth: 900, margin: '0 auto' }}>
-        <h2
-          style={{
-            textAlign: 'center',
-            fontSize: 26,
-            margin: '0 0 36px',
-            color: 'var(--color-primary)',
-          }}
-        >
-          Why clinics switch to Day2Day CARE
-        </h2>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: 24,
-          }}
-        >
+    <section className="home-why">
+      <div className="home-why-inner">
+        <div className="home-section-heading">
+          <span className="home-section-kicker">A CALMER WAY TO RUN YOUR CLINIC</span>
+          <h2>Built around better care</h2>
+        </div>
+        <div className="home-reasons-grid">
           {REASONS.map((r) => (
-            <div key={r.number} style={{ display: 'flex', gap: 14 }}>
-              <span style={{ fontSize: 28, fontWeight: 700, color: 'var(--color-accent-mint)' }}>
-                {r.number}
-              </span>
+            <div key={r.number} className="home-reason">
+              <span className="home-reason-number">{r.number}</span>
               <div>
-                <h3 style={{ margin: '0 0 4px', fontSize: 16 }}>{r.title}</h3>
-                <p style={{ margin: 0, color: 'var(--color-text-muted)', fontSize: 14 }}>
-                  {r.desc}
-                </p>
+                <h3>{r.title}</h3>
+                <p>{r.desc}</p>
               </div>
             </div>
           ))}

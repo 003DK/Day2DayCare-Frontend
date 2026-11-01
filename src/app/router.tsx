@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { MainLayout } from '@/components/layout/MainLayout'
 import { physioCareRoutes } from '@/routes/AppRoutes'
+import { LoadingSpinner } from '@/components/common/LoadingSpinner'
 
 const LoginPage = lazy(() => import('@/features/auth/LoginPage'))
 const HomePage = lazy(() => import('@/features/home/HomePage'))
@@ -12,7 +13,11 @@ const SettingsPage = lazy(() => import('@/features/settings/SettingsPage'))
 const NotFoundPage = lazy(() => import('@/features/home/NotFoundPage'))
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
-  const { isAuthenticated } = useAuth()
+  const { authReady, isAuthenticated } = useAuth()
+
+  if (!authReady) {
+    return <LoadingSpinner label="Checking your sign-in..." />
+  }
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />
@@ -23,7 +28,7 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
 
 const router = createBrowserRouter(
   [
-    { path: '/', element: <Navigate to="/login" replace /> },
+    { path: '/', element: <HomePage /> },
     { path: '/login', element: <LoginPage /> },
     {
       element: (
@@ -31,10 +36,7 @@ const router = createBrowserRouter(
           <MainLayout />
         </ProtectedRoute>
       ),
-      children: [
-        { index: true, element: <Navigate to="/dashboard" replace /> },
-        ...physioCareRoutes,
-      ],
+      children: [...physioCareRoutes],
     },
     { path: '/home', element: <HomePage /> },
     { path: '/products', element: <ProductsPage /> },
