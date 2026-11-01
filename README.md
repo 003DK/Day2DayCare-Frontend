@@ -12,6 +12,8 @@ Users can sign in with Google or their email address and password, and register 
 
 When running in Vite development mode without Firebase configuration, the login page offers a local-only demo using the pre-filled `superadmin` username and `superadmin` password. This shortcut is not included in production builds.
 
+For GitHub Pages, add `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID`, and `VITE_FIREBASE_APP_ID` as Actions secrets (or secrets in the `github-pages` environment). Set `VITE_API_URL` as an Actions variable if the app has a backend API; without it the app uses `/api` and still renders normally. Add the Pages hostname (for example, `003dk.github.io`) to Firebase Authentication's authorized domains. The deployment workflow passes these values into the production build.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:

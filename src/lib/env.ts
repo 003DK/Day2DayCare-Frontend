@@ -1,7 +1,10 @@
 import { z } from 'zod'
 
 const schema = z.object({
-  VITE_API_URL: z.string().url(),
+  VITE_API_URL: z.preprocess(
+    (value) => (typeof value === 'string' && value.trim() === '' ? undefined : value),
+    z.string().url().default('/api'),
+  ),
   VITE_FIREBASE_API_KEY: z.string().optional(),
   VITE_FIREBASE_AUTH_DOMAIN: z.string().optional(),
   VITE_FIREBASE_PROJECT_ID: z.string().optional(),
